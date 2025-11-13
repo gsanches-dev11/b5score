@@ -430,3 +430,56 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
+
+// --- TENTAR CARREGAR DADOS DO MOCKAPI E RE-RENDERIZAR ---
+async function carregarDadosDaMockApi(baseUrl) {
+  // Exemplo de baseUrl: 'https://63c1xxxxxx.mockapi.io/api/v1'
+  if (!baseUrl) return false;
+  try {
+    const [timesRes, playersRes] = await Promise.all([
+      fetch(`${baseUrl}/times`),
+      fetch(`${baseUrl}/jogadores`)
+    ]);
+    if (!timesRes.ok || !playersRes.ok) throw new Error('Resposta inválida da API');
+
+    const times = await timesRes.json();
+    const jogadores = await playersRes.json();
+
+    // Normalizar estrutura mínima
+    window.dados = window.dados || {};
+    window.dados.times = Array.isArray(times) ? times : [];
+    window.dados.jogadores = Array.isArray(jogadores) ? jogadores : [];
+
+    // re-renderizar se funções existirem
+    const cardsContainer = document.querySelector('.cards-grid') || document.getElementById('cardsGrid');
+    const playersContainer = document.querySelector('.players-grid') || document.getElementById('resultsPlayers');
+    if (cardsContainer && typeof renderizarTimes === 'function') renderizarTimes(cardsContainer, window.dados.times);
+    if (playersContainer && typeof renderizarJogadores === 'function') renderizarJogadores(playersContainer, window.dados.jogadores);
+
+    // atualizar página de resultados se estiver nela
+    const params = new URLSearchParams(window.location.search);
+    const qParam = params.get('q');
+    if (qParam) {
+      const q = qParam.trim().toLowerCase();
+      const filteredTimes = window.dados.times.filter(t => (`${t.nome} ${(t.jogadores||[]).join(' ')} ${t.emoji||''}`).toLowerCase().includes(q));
+      const filteredPlayers = window.dados.jogadores.filter(j => (`${j.nome} ${j.time||''}`).toLowerCase().includes(q));
+      const teamsContainer = document.getElementById('resultsTeams');
+      const playersContainer2 = document.getElementById('resultsPlayers');
+      const countsBox = document.getElementById('resultsCounts');
+      if (countsBox) countsBox.innerHTML = `${filteredTimes.length} time(s) • ${filteredPlayers.length} jogador(es)`;
+      if (teamsContainer && typeof renderizarTimes === 'function') renderizarTimes(teamsContainer, filteredTimes);
+      if (playersContainer2 && typeof renderizarJogadores === 'function') renderizarJogadores(playersContainer2, filteredPlayers);
+    }
+
+    return true;
+  } catch (err) {
+    console.warn('Falha ao carregar MockAPI:', err);
+    return false;
+  }
+}
+
+// Chamar a função no carregamento da página (substitua a URL abaixo pela do seu projeto MockAPI)
+document.addEventListener('DOMContentLoaded', async () => {
+  const MOCKAPI_BASE = 'https://YOUR_MOCKAPI_BASE.mockapi.io/api'; // <-- substitua aqui (sem barra final)
+  await carregarDadosDaMockApi(MOCKAPI_BASE);
+});

@@ -1,264 +1,138 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B5 Score - Estatísticas do BattleFive</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>B5 Score - Estatísticas do BattleFive</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <!-- CABEÇALHO / NAVEGAÇÃO -->
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <span class="logo-icon">B5</span>
-                <span class="logo-text">B5 Score</span>
-            </div>
-            
-            <nav class="nav">
-                <a href="index.html" class="nav-link active">Início</a>
-                <a href="pages/edicoes.html" class="nav-link">Edições</a>
-                <a href="pages/times.html" class="nav-link">Times</a>
-                <a href="pages/jogadores.html" class="nav-link">Jogadores</a>
-                <a href="pages/rankings.html" class="nav-link">Rankings</a>
-                <a href="pages/curiosidades.html" class="nav-link">Curiosidades</a>
-            </nav>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <span class="badge bg-primary me-2">B5</span>
+          <span class="fw-bold">B5 Score</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Alternar navegação">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <form id="searchForm" class="search-box" role="search" aria-label="Pesquisar" action="pages/search.html" method="get">
-                <input type="search" id="searchInput" name="q" placeholder="Buscar times, jogadores..." aria-label="Buscar times ou jogadores">
-                <button type="submit" id="searchBtn">🔍</button>
-            </form>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link active" href="index.html">Início</a></li>
+            <li class="nav-item"><a class="nav-link" href="pages/edicoes.html">Edições</a></li>
+            <li class="nav-item"><a class="nav-link" href="pages/times.html">Times</a></li>
+            <li class="nav-item"><a class="nav-link" href="pages/jogadores.html">Jogadores</a></li>
+            <li class="nav-item"><a class="nav-link" href="pages/rankings.html">Rankings</a></li>
+            <li class="nav-item"><a class="nav-link" href="pages/curiosidades.html">Curiosidades</a></li>
+          </ul>
+
+          <form id="searchForm" class="d-flex" role="search" action="pages/search.html" method="get" aria-label="Pesquisar">
+            <input class="form-control me-2" type="search" id="searchInput" name="q" placeholder="Buscar times, jogadores..." aria-label="Buscar times ou jogadores">
+            <button class="btn btn-primary" type="submit" id="searchBtn">🔍</button>
+          </form>
         </div>
-    </header>
+      </div>
+    </nav>
+  </header>
 
-    <!-- SEÇÃO PRINCIPAL -->
-    <section class="hero">
-        <div class="hero-content">
-            <span id="seasonBadge" class="season-badge">TEMPORADA 3 • 2025</span>
-            <h1 id="heroTitle">BattleFive</h1>
-            <p id="heroDesc">Acompanhe as estatísticas completas do campeonato mais emocionante de FiveM</p>
-            
-             <div class="hero-stats">
-                 <div class="hero-stat">
-                     <span class="stat-label">CAMPEÃO ATUAL</span>
-                    <span id="championValue" class="stat-value">Dragon Force</span>
-                 </div>
-                 <div class="hero-stat">
-                     <span class="stat-label">MVP DA TEMPORADA</span>
-                    <span id="mvpValue" class="stat-value">PlayerPro</span>
-                 </div>
-             </div>
+  <main>
+    <section class="hero py-5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-12 col-lg-8">
+            <span id="seasonBadge" class="badge bg-secondary mb-2">TEMPORADA 3 • 2025</span>
+            <h1 id="heroTitle" class="display-6">BattleFive</h1>
+            <p id="heroDesc" class="lead">Acompanhe as estatísticas completas do campeonato mais emocionante de FiveM</p>
 
-            <button id="btnEdicoes" class="btn-primary">Ver Detalhes da Edição</button>
-         </div>
-     </section>
-
-    <!-- ESTATÍSTICAS GERAIS -->
-    <section class="stats-section">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon">🏆</div>
-                    <div class="stat-label">Total de Edições</div>
-                    <div class="stat-number">3</div>
-                    <div class="stat-desc">Desde 2023</div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon">👥</div>
-                    <div class="stat-label">Times Participantes</div>
-                    <div class="stat-number">6</div>
-                    <div class="stat-desc">+4 nesta temporada</div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon">⚡</div>
-                    <div class="stat-label">Partidas Realizadas</div>
-                    <div class="stat-number">156</div>
-                    <div class="stat-desc">Dados da Temporada 3</div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon">📈</div>
-                    <div class="stat-label">Média de Abates/Partida</div>
-                    <div class="stat-number">12.5</div>
-                    <div class="stat-desc">↑ 8% vs temporada anterior</div>
-                </div>
+            <div class="d-flex gap-3 flex-wrap mb-3" id="heroStatsWrap">
+              <div class="p-2 border rounded">
+                <div class="text-muted small">CAMPEÃO ATUAL</div>
+                <div id="championValue" class="fw-bold">Dragon Force</div>
+              </div>
+              <div class="p-2 border rounded">
+                <div class="text-muted small">MVP DA TEMPORADA</div>
+                <div id="mvpValue" class="fw-bold">PlayerPro</div>
+              </div>
             </div>
+
+            <button id="btnEdicoes" class="btn btn-primary">Ver Detalhes da Edição</button>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- MELHORES TIMES -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Melhores Times</h2>
-                <a href="pages/times.html" class="link-more">Ver Todos →</a>
-            </div>
-
-            <div class="cards-grid">
-                <div class="card">
-                    <div class="card-emoji">🐉</div>
-                    <h3>Dragon Force</h3>
-                    <p class="card-subtitle">2 títulos • 3 participações</p>
-                    <div class="card-players">
-                        <strong>Jogadores Principais:</strong>
-                        <ul>
-                            <li>PlayerPro</li>
-                            <li>GameMaster</li>
-                            <li>SkillKing</li>
-                        </ul>
-                    </div>
-                    <a href="pages/times.html" class="card-link">Ver Detalhes →</a>
-                </div>
-
-                <div class="card">
-                    <div class="card-emoji">🐺</div>
-                    <h3>Wolf Pack</h3>
-                    <p class="card-subtitle">1 título • 3 participações</p>
-                    <div class="card-players">
-                        <strong>Jogadores Principais:</strong>
-                        <ul>
-                            <li>AlphaWolf</li>
-                            <li>BetaStrike</li>
-                            <li>GammaRush</li>
-                        </ul>
-                    </div>
-                    <a href="pages/times.html" class="card-link">Ver Detalhes →</a>
-                </div>
-
-                <div class="card">
-                    <div class="card-emoji">⚡</div>
-                    <h3>Lightning Strike</h3>
-                    <p class="card-subtitle">0 títulos • 2 participações</p>
-                    <div class="card-players">
-                        <strong>Jogadores Principais:</strong>
-                        <ul>
-                            <li>ThunderBolt</li>
-                            <li>StormRider</li>
-                            <li>VoltageX</li>
-                        </ul>
-                    </div>
-                    <a href="pages/times.html" class="card-link">Ver Detalhes →</a>
-                </div>
-            </div>
+    <section class="stats-section py-4">
+      <div class="container">
+        <div id="statsGrid" class="row g-3">
+          <!-- preenchido por js a partir de js/dados.js -->
         </div>
+      </div>
     </section>
 
-    <!-- MELHORES JOGADORES -->
-    <section class="section bg-light">
-        <div class="container">
-            <div class="section-header">
-                <h2>Melhores Jogadores</h2>
-                <a href="pages/jogadores.html" class="link-more">Ver Todos →</a>
-            </div>
-
-            <div class="players-grid">
-                <div class="player-card">
-                    <div class="player-avatar">P</div>
-                    <h3>PlayerPro</h3>
-                    <p class="player-team">Dragon Force • MVP x2</p>
-                    <div class="player-stats">
-                        <div class="player-stat">
-                            <span class="stat-val">245</span>
-                            <span class="stat-lbl">Abates</span>
-                        </div>
-                        <div class="player-stat">
-                            <span class="stat-val">2.45</span>
-                            <span class="stat-lbl">K/D</span>
-                        </div>
-                    </div>
-                    <a href="pages/jogadores.html" class="card-link">Ver Perfil →</a>
-                </div>
-
-                <div class="player-card">
-                    <div class="player-avatar">A</div>
-                    <h3>AlphaWolf</h3>
-                    <p class="player-team">Wolf Pack • MVP x1</p>
-                    <div class="player-stats">
-                        <div class="player-stat">
-                            <span class="stat-val">198</span>
-                            <span class="stat-lbl">Abates</span>
-                        </div>
-                        <div class="player-stat">
-                            <span class="stat-val">2.12</span>
-                            <span class="stat-lbl">K/D</span>
-                        </div>
-                    </div>
-                    <a href="pages/jogadores.html" class="card-link">Ver Perfil →</a>
-                </div>
-
-                <div class="player-card">
-                    <div class="player-avatar">T</div>
-                    <h3>ThunderBolt</h3>
-                    <p class="player-team">Lightning Strike • MVP x0</p>
-                    <div class="player-stats">
-                        <div class="player-stat">
-                            <span class="stat-val">176</span>
-                            <span class="stat-lbl">Abates</span>
-                        </div>
-                        <div class="player-stat">
-                            <span class="stat-val">1.89</span>
-                            <span class="stat-lbl">K/D</span>
-                        </div>
-                    </div>
-                    <a href="pages/jogadores.html" class="card-link">Ver Perfil →</a>
-                </div>
-            </div>
+    <section class="section py-4">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 class="h5 mb-0">Melhores Times</h2>
+          <a href="pages/times.html" class="text-decoration-none">Ver Todos →</a>
         </div>
+
+        <div id="cardsGrid" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 cards-grid">
+          <!-- preenchido por renderizarTimes -->
+        </div>
+      </div>
     </section>
 
-    <!-- RODAPÉ -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <h4>B5 Score</h4>
-                    <p>Estatísticas do BattleFive</p>
-                    <p>Acompanhe tudo sobre o campeonato.</p>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Navegação</h4>
-                    <ul>
-                        <li><a href="index.html">Início</a></li>
-                        <li><a href="pages/edicoes.html">Edições</a></li>
-                        <li><a href="pages/times.html">Times</a></li>
-                        <li><a href="pages/jogadores.html">Jogadores</a></li>
-                        <li><a href="pages/rankings.html">Rankings</a></li>
-                        <li><a href="pages/curiosidades.html">Curiosidades</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Recursos</h4>
-                    <ul>
-                        <li><a href="#">Regulamento</a></li>
-                        <li><a href="#">Contato</a></li>
-                        <li><a href="#">Imprensa</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Redes</h4>
-                    <ul>
-                        <li><a href="#">Twitch</a></li>
-                        <li><a href="#">YouTube</a></li>
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">Discord</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2025 B5 Score. Todos os direitos reservados.</p>
-            </div>
+    <section class="section bg-light py-4">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 class="h5 mb-0">Melhores Jogadores</h2>
+          <a href="pages/jogadores.html" class="text-decoration-none">Ver Todos →</a>
         </div>
-    </footer>
 
-    <!-- scripts: dados primeiro, depois script principal -->
-    <script src="js/dados.js"></script>
-    <script src="js/script.js"></script>
- </body>
- </html>
+        <div class="players-grid row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+          <!-- preenchido por renderizarJogadores -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-4">
+    <div class="container">
+      <div class="row gy-3">
+        <div class="col-12 col-md-4">
+          <h5>B5 Score</h5>
+          <p class="mb-0">Estatísticas do BattleFive</p>
+        </div>np
+
+        <div class="col-6 col-md-2">
+          <h6>Navegação</h6>
+          <ul class="list-unstyled mb-0">
+            <li><a href="index.html" class="text-decoration-none">Início</a></li>
+            <li><a href="pages/edicoes.html" class="text-decoration-none">Edições</a></li>
+            <li><a href="pages/times.html" class="text-decoration-none">Times</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-2">
+          <h6>Recursos</h6>
+          <ul class="list-unstyled mb-0">
+            <li><a href="#" class="text-decoration-none">Regulamento</a></li>
+            <li><a href="#" class="text-decoration-none">Contato</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-md-4 text-md-end">
+          <small class="text-muted">&copy; 2025 B5 Score. Todos os direitos reservados.</small>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/dados.js"></script>
+  <script src="js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

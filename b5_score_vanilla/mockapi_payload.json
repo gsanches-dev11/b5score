@@ -1,0 +1,45 @@
+{
+  "times": [
+    {
+      "nome": "Dragon Force",
+      "subtitle": "2 títulos • 3 participações",
+      "jogadores": ["PlayerPro", "GameMaster", "SkillKing"],
+      "imagem": "https://via.placeholder.com/640x360.png?text=Dragon+Force"
+    },
+    {
+      "nome": "Wolf Pack",
+      "subtitle": "1 título • 3 participações",
+      "jogadores": ["AlphaWolf", "BetaStrike", "GammaRush"],
+      "imagem": "https://via.placeholder.com/640x360.png?text=Wolf+Pack"
+    },
+    {
+      "nome": "Lightning Strike",
+      "subtitle": "0 títulos • 2 participações",
+      "jogadores": ["ThunderBolt", "StormRider", "VoltageX"],
+      "imagem": "https://via.placeholder.com/640x360.png?text=Lightning+Strike"
+    }
+  ],
+  "jogadores": [
+    {
+      "nome": "PlayerPro",
+      "time": "Dragon Force",
+      "avatar": "https://via.placeholder.com/200.png?text=PlayerPro",
+      "abates": 245,
+      "kd": 2.45
+    },
+    {
+      "nome": "AlphaWolf",
+      "time": "Wolf Pack",
+      "avatar": "https://via.placeholder.com/200.png?text=AlphaWolf",
+      "abates": 198,
+      "kd": 2.12
+    },
+    {
+      "nome": "ThunderBolt",
+      "time": "Lightning Strike",
+      "avatar": "https://via.placeholder.com/200.png?text=ThunderBolt",
+      "abates": 176,
+      "kd": 1.89
+    }
+  ]
+}
