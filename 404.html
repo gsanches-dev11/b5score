@@ -1,20 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
   <head>
-    <meta charset="utf-8">
-    <title>Battle Five Stats</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Site Guizin - React App" />
+    <title>Battle Five Stats - Estatísticas e Rankings</title>
     <script>
       // Redireciona para index.html para que o React Router funcione
       var path = window.location.pathname;
       var search = window.location.search;
       var hash = window.location.hash;
-      window.location.href = window.location.origin + '/b5score' + path + search + hash;
+      
+      // Remove /b5score do caminho se existir
+      var cleanPath = path.replace(/^\/b5score/, '') || '/';
+      
+      // Redireciona para index.html mantendo o caminho
+      window.location.replace('/b5score/index.html' + cleanPath + search + hash);
     </script>
   </head>
   <body>
-    <noscript>
-      Você precisa habilitar JavaScript para executar este app.
-    </noscript>
+    <noscript>Você precisa habilitar JavaScript para executar este app.</noscript>
+    <div id="root"></div>
   </body>
 </html>
-
