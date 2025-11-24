@@ -1,0 +1,25 @@
+# Comandos para enviar este código para seu repositório GitHub existente
+
+# 1. Inicializar o repositório Git
+git init
+
+# 2. Adicionar todos os arquivos
+git add .
+
+# 3. Fazer o primeiro commit
+git commit -m "Adicionar projeto Site Guizin"
+
+# 4. Renomear branch para main
+git branch -M main
+
+# 5. Conectar ao seu repositório GitHub existente
+# SUBSTITUA pela URL do seu repositório
+git remote add origin https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
+
+# 6. OPÇÃO A: Mesclar com o conteúdo que já está no GitHub (RECOMENDADO)
+git pull origin main --allow-unrelated-histories
+# Se houver conflitos, resolva-os e depois:
+git push -u origin main
+
+# 6. OPÇÃO B: Substituir tudo que está no GitHub por este código (CUIDADO!)
+# git push -u origin main --force
