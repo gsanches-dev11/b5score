@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curiosidades - B5 Score</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid #e2e8f0;
+            background: white;
+            color: #64748b;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: #4f46e5;
+            color: #4f46e5;
+            background: rgba(79, 70, 229, 0.1);
+        }
+
+        .curiosidade-card {
+            background: white;
+            border-left: 4px solid #4f46e5;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .curiosidade-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .curiosidade-card h3 {
+            margin-bottom: 10px;
+            color: #1e293b;
+        }
+
+        .curiosidade-card p {
+            color: #64748b;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .curiosidade-categoria {
+            display: inline-block;
+            background: #f8fafc;
+            color: #4f46e5;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">B5</span>
+                <span class="logo-text">B5 Score</span>
+            </div>
+            
+            <nav class="nav">
+                <a href="../index.html" class="nav-link">Início</a>
+                <a href="edicoes.html" class="nav-link">Edições</a>
+                <a href="times.html" class="nav-link">Times</a>
+                <a href="jogadores.html" class="nav-link">Jogadores</a>
+                <a href="rankings.html" class="nav-link">Rankings</a>
+                <a href="curiosidades.html" class="nav-link active">Curiosidades</a>
+            </nav>
+
+            <button class="menu-toggle">☰</button>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO -->
+    <section class="section">
+        <div class="container">
+            <h1 style="margin-bottom: 10px; font-size: 32px;">Curiosidades</h1>
+            <p style="color: #64748b; margin-bottom: 30px;">Conheça os fatos mais interessantes do campeonato</p>
+
+            <!-- FILTROS -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filtrarCuriosidades('Todos')">Todos</button>
+                <button class="filter-btn" onclick="filtrarCuriosidades('Recorde')">🏆 Recorde</button>
+                <button class="filter-btn" onclick="filtrarCuriosidades('Jogador')">👤 Jogador</button>
+                <button class="filter-btn" onclick="filtrarCuriosidades('Partida')">⚔️ Partida</button>
+                <button class="filter-btn" onclick="filtrarCuriosidades('Time')">👥 Time</button>
+            </div>
+
+            <!-- CURIOSIDADES -->
+            <div id="curiosidadesContainer">
+                <!-- Preenchido por JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>B5 Score</h4>
+                    <p>Estatísticas do BattleFive</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="../index.html">Início</a></li>
+                        <li><a href="edicoes.html">Edições</a></li>
+                        <li><a href="times.html">Times</a></li>
+                        <li><a href="jogadores.html">Jogadores</a></li>
+                        <li><a href="rankings.html">Rankings</a></li>
+                        <li><a href="curiosidades.html">Curiosidades</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 B5 Score. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+        // Renderizar curiosidades
+        function renderizarCuriosidadesFiltradas(categoria = 'Todos') {
+            const container = document.getElementById('curiosidadesContainer');
+            let curiosidadesFiltradas = dados.curiosidades;
+
+            if (categoria !== 'Todos') {
+                curiosidadesFiltradas = dados.curiosidades.filter(c => c.categoria === categoria);
+            }
+
+            container.innerHTML = curiosidadesFiltradas.map(c => `
+                <div class="curiosidade-card">
+                    <h3>${c.titulo}</h3>
+                    <p>${c.descricao}</p>
+                    <span class="curiosidade-categoria">${c.categoria}</span>
+                </div>
+            `).join('');
+        }
+
+        // Filtrar curiosidades
+        function filtrarCuriosidades(categoria) {
+            // Atualizar botões ativos
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Renderizar curiosidades filtradas
+            renderizarCuriosidadesFiltradas(categoria);
+        }
+
+        // Carregar ao iniciar
+        document.addEventListener('DOMContentLoaded', function() {
+            renderizarCuriosidadesFiltradas();
+        });
+    </script>
+</body>
+</html>

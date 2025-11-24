@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rankings - B5 Score</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .ranking-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .ranking-table thead {
+            background: linear-gradient(135deg, #4f46e5, #4338ca);
+            color: white;
+        }
+
+        .ranking-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .ranking-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 14px;
+        }
+
+        .ranking-table tbody tr:hover {
+            background-color: #f8fafc;
+        }
+
+        .ranking-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .rank-position {
+            font-weight: 700;
+            color: #4f46e5;
+            font-size: 16px;
+            min-width: 30px;
+        }
+
+        .rank-position.top-1 { color: #fbbf24; }
+        .rank-position.top-2 { color: #c0c0c0; }
+        .rank-position.top-3 { color: #cd7f32; }
+
+        .ranking-section {
+            margin-bottom: 50px;
+        }
+
+        .ranking-section h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">B5</span>
+                <span class="logo-text">B5 Score</span>
+            </div>
+            
+            <nav class="nav">
+                <a href="../index.html" class="nav-link">Início</a>
+                <a href="edicoes.html" class="nav-link">Edições</a>
+                <a href="times.html" class="nav-link">Times</a>
+                <a href="jogadores.html" class="nav-link">Jogadores</a>
+                <a href="rankings.html" class="nav-link active">Rankings</a>
+                <a href="curiosidades.html" class="nav-link">Curiosidades</a>
+            </nav>
+
+            <button class="menu-toggle">☰</button>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO -->
+    <section class="section">
+        <div class="container">
+            <h1 style="margin-bottom: 10px; font-size: 32px;">Rankings</h1>
+            <p style="color: #64748b; margin-bottom: 40px;">Veja os melhores jogadores e times do campeonato</p>
+
+            <!-- RANKING DE KILLS -->
+            <div class="ranking-section">
+                <h2>🔫 Top 10 - Kills</h2>
+                <table class="ranking-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 50px;">Pos</th>
+                            <th>Jogador</th>
+                            <th>Time</th>
+                            <th style="text-align: right;">Kills</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rankingKills">
+                        <!-- Preenchido por JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- RANKING DE K/D -->
+            <div class="ranking-section">
+                <h2>📊 Top 10 - K/D Ratio</h2>
+                <table class="ranking-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 50px;">Pos</th>
+                            <th>Jogador</th>
+                            <th>Time</th>
+                            <th style="text-align: right;">K/D</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rankingKD">
+                        <!-- Preenchido por JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- RANKING DE TIMES -->
+            <div class="ranking-section">
+                <h2>🏆 Ranking de Times</h2>
+                <table class="ranking-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 50px;">Pos</th>
+                            <th>Time</th>
+                            <th style="text-align: right;">Títulos</th>
+                            <th style="text-align: right;">Win Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rankingTimes">
+                        <!-- Preenchido por JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>B5 Score</h4>
+                    <p>Estatísticas do BattleFive</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="../index.html">Início</a></li>
+                        <li><a href="edicoes.html">Edições</a></li>
+                        <li><a href="times.html">Times</a></li>
+                        <li><a href="jogadores.html">Jogadores</a></li>
+                        <li><a href="rankings.html">Rankings</a></li>
+                        <li><a href="curiosidades.html">Curiosidades</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 B5 Score. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // RANKING DE KILLS
+            const rankingKillsContainer = document.getElementById('rankingKills');
+            const jogadoresOrdenadosKills = [...dados.jogadores].sort((a, b) => b.kills - a.kills);
+            rankingKillsContainer.innerHTML = jogadoresOrdenadosKills.map((j, index) => `
+                <tr>
+                    <td><span class="rank-position top-${index + 1}">${index + 1}</span></td>
+                    <td><strong>${j.nome}</strong></td>
+                    <td>${j.time}</td>
+                    <td style="text-align: right; font-weight: 600; color: #4f46e5;">${j.kills}</td>
+                </tr>
+            `).join('');
+
+            // RANKING DE K/D
+            const rankingKDContainer = document.getElementById('rankingKD');
+            const jogadoresOrdenadosKD = [...dados.jogadores].sort((a, b) => b.kd - a.kd);
+            rankingKDContainer.innerHTML = jogadoresOrdenadosKD.map((j, index) => `
+                <tr>
+                    <td><span class="rank-position top-${index + 1}">${index + 1}</span></td>
+                    <td><strong>${j.nome}</strong></td>
+                    <td>${j.time}</td>
+                    <td style="text-align: right; font-weight: 600; color: #4f46e5;">${j.kd.toFixed(2)}</td>
+                </tr>
+            `).join('');
+
+            // RANKING DE TIMES
+            const rankingTimesContainer = document.getElementById('rankingTimes');
+            const timesOrdenados = [...dados.times].sort((a, b) => b.titulos - a.titulos || b.winRate - a.winRate);
+            rankingTimesContainer.innerHTML = timesOrdenados.map((t, index) => `
+                <tr>
+                    <td><span class="rank-position top-${index + 1}">${index + 1}</span></td>
+                    <td><strong>${t.emoji} ${t.nome}</strong></td>
+                    <td style="text-align: right;">${t.titulos}</td>
+                    <td style="text-align: right; font-weight: 600; color: #4f46e5;">${t.winRate}%</td>
+                </tr>
+            `).join('');
+        });
+    </script>
+</body>
+</html>
