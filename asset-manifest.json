@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/b5score/static/css/main.37ea4f62.css",
+    "main.js": "/b5score/static/js/main.c1e4d0b4.js",
+    "index.html": "/b5score/index.html",
+    "main.37ea4f62.css.map": "/b5score/static/css/main.37ea4f62.css.map",
+    "main.c1e4d0b4.js.map": "/b5score/static/js/main.c1e4d0b4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.37ea4f62.css",
+    "static/js/main.c1e4d0b4.js"
+  ]
+}
